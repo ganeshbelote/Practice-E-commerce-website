@@ -1,0 +1,253 @@
+:root {
+  --bg-color: #0061e0;
+  --fade-bg-color: #2e89ff;
+  --btn-color: #fed700;
+  --para-color: #757575;
+  --dark-para-color: #313131;
+  --product-bg: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #181818;
+  overflow-x: hidden;
+}
+
+button {
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  background-color: var(--btn-color);
+  padding: 0.8rem 1.2rem;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar {
+  padding: 1.2rem 2.4rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-color);
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+  }
+  .search-bar {
+    overflow: hidden;
+    border-radius: 16px;
+    height: 3rem;
+    width: 24rem;
+    display: flex;
+    align-items: center;
+    input,
+    button {
+      height: 100%;
+      border-radius: 0;
+    }
+    input {
+      font-weight: 600;
+      width: 80%;
+      outline: 0;
+      border: 0;
+      padding: 0.8rem 1.2rem;
+    }
+  }
+  .self-options {
+    display: flex;
+    gap: 0.5rem;
+    .menu-btn {
+      display: none;
+    }
+  }
+}
+
+.category {
+  padding: 1rem 2rem;
+  background-color: var(--fade-bg-color);
+  select {
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    color: var(--btn-color);
+    font-size: 1.05rem;
+    font-weight: 600;
+    option {
+      padding: 1.2rem;
+      font-size: 1rem;
+      background: #000;
+    }
+  }
+}
+
+.product-page {
+  padding: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  .product {
+    width: 240px;
+    min-height: 265px;
+    background-color: var(--product-bg);
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+    img {
+      height: 50%;
+      border-radius: 5px;
+    }
+    h2 {
+      font-size: 1.2rem;
+    }
+    p {
+      color: var(--para-color);
+    }
+    .price {
+      font-size: 1.8rem;
+      color: var(--bg-color);
+    }
+  }
+  .product:hover {
+    transform: scale(1.01);
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+.wrapper {
+  padding: 4rem;
+  position: fixed;
+  top: 0;
+  min-height: 100vh;
+  width: 100vw;
+  background: #00000080;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  .product-details {
+    position: relative;
+    background-color: white;
+    padding: 2rem;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+      border: 2px solid black;
+    }
+    .details {
+      width: 300px;
+      padding: 1.2rem;
+      border-radius: 12px;
+      border: 2px solid black;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      p.category-name {
+        color: var(--para-color);
+      }
+      p {
+        color: var(--dark-para-color);
+      }
+      h3 {
+        color: var(--bg-color);
+      }
+    }
+    .btn-sections {
+      width: 268px;
+      padding: 1.2rem;
+      border-radius: 12px;
+      height: fit-content;
+      border: 2px solid black;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      .sub-btn-section {
+        display: flex;
+        gap: 0.6rem;
+        .addCartBtn {
+          border: 1.55px solid black;
+          background-color: transparent;
+        }
+        .addCartBtn:hover {
+          color: white;
+          background-color: black;
+        }
+      }
+      .connect-store {
+        background-color: var(--bg-color);
+        color: white;
+      }
+    }
+    .cancle {
+      outline: 0;
+      padding: 0;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding-bottom: 0.2rem;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background-color: red;
+      border: 1.2px solid black;
+    }
+  }
+}
+
+@media (max-width: 915px) {
+  .navbar {
+    padding: 1.2rem;
+    .logo {
+      font-size: 1.4rem;
+    }
+  }
+  .search-bar {
+    display: none !important;
+  }
+  .self-options button:not(.menu-btn) {
+    display: none !important;
+  }
+  .menu-btn {
+    display: block !important;
+  }
+  .wrapper {
+    padding: 1.8rem 4rem;
+  }
+}

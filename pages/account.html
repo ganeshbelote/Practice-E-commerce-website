@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Account</title>
+    <style>
+      :root {
+        --bg-color: #0061e0;
+        --btn-color: #fed700;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+          sans-serif;
+      }
+
+      body {
+        width: 100%;
+        height: 100%;
+        background-color: #181818;
+        overflow-x: hidden;
+      }
+
+      button {
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        outline: 0;
+        border: 0;
+        background-color: var(--btn-color);
+        padding: 0.8rem 1.2rem;
+      }
+
+      .navbar {
+        padding: 1.2rem 2.4rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--bg-color);
+        .logo {
+          font-size: 1.6rem;
+          font-weight: 700;
+          color: white;
+        }
+        .search-bar {
+          overflow: hidden;
+          border-radius: 16px;
+          height: 3rem;
+          width: 24rem;
+          display: flex;
+          align-items: center;
+          input,
+          button {
+            height: 100%;
+            border-radius: 0;
+          }
+          input {
+            font-weight: 600;
+            width: 80%;
+            outline: 0;
+            border: 0;
+            padding: 0.8rem 1.2rem;
+          }
+        }
+        .self-options {
+          display: flex;
+          gap: 0.5rem;
+          .menu-btn {
+            display: none;
+          }
+        }
+      }
+
+      .wrapper {
+        padding: 4rem;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .my-details {
+          background-color: white;
+          padding: 2rem;
+          overflow: hidden;
+          border-radius: 12px;
+          border: 2px solid black;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 1.8rem;
+          img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            border: 2px solid black;
+          }
+          .details {
+            border: 2px solid black;
+            border-radius: 8px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+          .details .up-section {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.2rem;
+            h3 {
+              color: var(--bg-color);
+            }
+          }
+        }
+      }
+
+      table {
+        margin-top: 0.8rem;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        text-align: left;
+      }
+
+      th:first-child,
+      td:first-child {
+        border-left: none;
+      }
+      tr:first-child th:first-child {
+        border-top-left-radius: 8px;
+      }
+      tr:first-child td:last-child {
+        border-top-right-radius: 8px;
+      }
+      tr:last-child th:first-child {
+        border-bottom-left-radius: 8px;
+      }
+      tr:last-child td:last-child {
+        border-bottom-right-radius: 8px;
+      }
+
+      @media (max-width: 915px) {
+        .navbar {
+          padding: 1.2rem;
+          .logo {
+            font-size: 1.4rem;
+          }
+        }
+        .search-bar {
+          display: none !important;
+        }
+        .self-options button:not(.menu-btn) {
+          display: none !important;
+        }
+        .menu-btn {
+          display: block !important;
+        }
+        .wrapper {
+          padding: 1.8rem 4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">🛒 Let's Shop</div>
+      <div class="search-bar">
+        <input
+          type="text"
+          placeholder="Search for products, brands and more ..."
+        />
+        <button>Search</button>
+      </div>
+      <div class="self-options">
+        <button>My Cart</button>
+        <a href="../index.html">
+          <button>Home</button>
+        </a>
+        <button class="menu-btn">Menu</button>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="my-details">
+        <img src="../assets/profileImg.png" alt="" />
+        <div class="details">
+          <div class="up-section">
+            <h3>Profile Details</h3>
+            <button>✏️ Edit</button>
+          </div>
+          <table>
+            <tr>
+              <th>Full Name</th>
+              <td>Abhishek Magar</td>
+            </tr>
+            <tr>
+              <th>Mobile Number</th>
+              <td>+91 967805XXXX</td>
+            </tr>
+            <tr>
+              <th>Email ID</th>
+              <td>abhishekmagar733@gmail.com</td>
+            </tr>
+            <tr>
+              <th>Gender</th>
+              <td>Male</td>
+            </tr>
+            <tr>
+              <th>Location</th>
+              <td>A/P Devibhoyare, Tal - Parner, Dist - Ahilyanagar</td>
+            </tr>
+            <tr>
+              <th>Date of Birth</th>
+              <td>None</td>
+            </tr>
+            <tr>
+              <th>Alternate Number</th>
+              <td>None</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

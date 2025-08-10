@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce website</title>
+    <link rel="stylesheet" href="./style/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">🛒 Let's Shop</div>
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Search for products, brands and more ..."
+          />
+          <button>Search</button>
+        </div>
+        <div class="self-options">
+          <button>My Cart</button>
+          <a href="./pages/account.html">
+            <button>My Account</button>
+          </a>
+          <button class="menu-btn">Menu</button>
+        </div>
+      </div>
+      <div class="category">
+        <select name="category" id="category">
+          <option selected disabled>Select category</option>
+          <option value="Smart Phones">Smart Phones</option>
+          <option value="Laptops & Printers">Laptops & Printers</option>
+          <option value="Home Appliances">Home Appliances</option>
+          <option value="Accessories">Accessories</option>
+          <option value="Air Coolers">Air Coolers</option>
+        </select>
+      </div>
+      <div class="product-page"></div>
+    </div>
+    <div class="wrapper">
+      <div class="product-details">
+        <img src="./assets/coverImg.png" alt="" />
+        <div class="details">
+          <h2>XYZ</h2>
+          <p class="category-name">category</p>
+          <p class="product-desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
+            impedit ab eveniet obcaecati dolorem mollitia maxime corrupti
+            expedita tempora corporis!
+          </p>
+          <h3>4000</h3>
+        </div>
+        <div class="btn-sections">
+          <div class="sub-btn-section">
+            <button class="addCartBtn">Add to Cart</button>
+            <button>Buy Now</button>
+          </div>
+          <button class="connect-store">Connect to Store</button>
+        </div>
+        <button class="cancle">x</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    let selectedProduct
+    const productList = [
+      {
+        image: '',
+        name: 'Redmi K50i',
+        description: '6GB RAM, 128GB Storage',
+        category: 'Smart Phones',
+        price: '₹20,000'
+      },
+      {
+        image: '',
+        name: 'iPhone 14',
+        description: '128GB Storage, A15 Bionic Chip',
+        category: 'Smart Phones',
+        price: '₹79,900'
+      },
+      {
+        image: '',
+        name: 'Samsung Galaxy S23',
+        description: '8GB RAM, 256GB Storage',
+        category: 'Smart Phones',
+        price: '₹74,999'
+      },
+      {
+        image: '',
+        name: 'HP LaserJet Pro M404dn',
+        description: 'Monochrome Laser Printer',
+        category: 'Laptops & Printers',
+        price: '₹28,000'
+      },
+      {
+        image: '',
+        name: 'Dell Inspiron 15',
+        description: 'i5 12th Gen, 8GB RAM, 512GB SSD',
+        category: 'Laptops & Printers',
+        price: '₹62,000'
+      },
+      {
+        image: '',
+        name: 'Canon PIXMA G3000',
+        description: 'All-in-One Ink Tank Printer',
+        category: 'Laptops & Printers',
+        price: '₹16,000'
+      },
+      {
+        image: '',
+        name: 'LG 260L Double Door Refrigerator',
+        description: 'Smart Inverter Compressor',
+        category: 'Home Appliances',
+        price: '₹27,000'
+      },
+      {
+        image: '',
+        name: 'Samsung 7kg Fully Automatic Washing Machine',
+        description: 'Digital Inverter Motor',
+        category: 'Home Appliances',
+        price: '₹29,500'
+      },
+      {
+        image: '',
+        name: 'Philips Air Fryer XL',
+        description: 'Rapid Air Technology, 4.2L',
+        category: 'Home Appliances',
+        price: '₹11,000'
+      },
+      {
+        image: '',
+        name: 'Logitech MX Master 3 Mouse',
+        description: 'Ergonomic Wireless Mouse',
+        category: 'Accessories',
+        price: '₹8,500'
+      },
+      {
+        image: '',
+        name: 'Sony WH-1000XM5 Headphones',
+        description: 'Noise Cancelling, Wireless',
+        category: 'Accessories',
+        price: '₹34,990'
+      },
+      {
+        image: '',
+        name: 'Dell USB-C Dock',
+        description: 'Multiple Ports, 4K Support',
+        category: 'Accessories',
+        price: '₹14,000'
+      },
+      {
+        image: '',
+        name: 'Bajaj Platini PX97 Air Cooler',
+        description: '36L, Honeycomb Pads',
+        category: 'Air Coolers',
+        price: '₹7,500'
+      },
+      {
+        image: '',
+        name: 'Symphony Diet 12T Tower Cooler',
+        description: '12L, i-Pure Technology',
+        category: 'Air Coolers',
+        price: '₹6,200'
+      },
+      {
+        image: '',
+        name: 'Crompton Ozone 55 Air Cooler',
+        description: '55L, Ice Chamber',
+        category: 'Air Coolers',
+        price: '₹13,000'
+      },
+      {
+        image: '',
+        name: 'Asus Vivobook 16X',
+        description: 'Ryzen 5, 16GB RAM, 512GB SSD',
+        category: 'Laptops & Printers',
+        price: '₹68,000'
+      },
+      {
+        image: '',
+        name: 'Motorola Edge 40',
+        description: '8GB RAM, 256GB Storage',
+        category: 'Smart Phones',
+        price: '₹29,999'
+      },
+      {
+        image: '',
+        name: 'Whirlpool 190L Single Door Refrigerator',
+        description: '5 Star, Inverter Technology',
+        category: 'Home Appliances',
+        price: '₹18,500'
+      },
+      {
+        image: '',
+        name: 'Anker PowerCore 20,000mAh',
+        description: 'Fast Charging Power Bank',
+        category: 'Accessories',
+        price: '₹3,999'
+      },
+      {
+        image: '',
+        name: 'Realme Narzo 60x',
+        description: '6GB RAM, 128GB Storage',
+        category: 'Smart Phones',
+        price: '₹15,999'
+      }
+    ]
+
+    const productPage = document.querySelector('.product-page')
+    const productDetails = document.querySelector('.product-details .details')
+    const cancleBtn = document.querySelector('.cancle')
+    const searchBar = document.querySelector('.search-bar input')
+    const category = document.querySelector('.category select')
+    let filteredProductList = productList
+
+    const renderProductList = (filteredProductList) => {
+      productPage.innerHTML = "";
+      filteredProductList.map((product, index) => {
+        const productContainer = document.createElement('div')
+        productContainer.classList.add('product')
+        productContainer.id = index
+  
+        const coverImg = document.createElement('img')
+        coverImg.src = product.image || './assets/coverImg.png'
+        const productName = document.createElement('h2')
+        productName.classList.add('product-name')
+        productName.textContent = product.name
+  
+        const category = document.createElement('p')
+        category.textContent = product.category
+  
+        const price = document.createElement('h3')
+        price.classList.add('price')
+        price.textContent = product.price
+  
+        const addCartBtn = document.createElement('button')
+        addCartBtn.textContent = '🛒 Add to Cart'
+  
+        productContainer.append(
+          coverImg,
+          productName,
+          category,
+          price,
+          addCartBtn
+        )
+  
+        productPage.append(productContainer)
+      })
+    }
+    renderProductList(filteredProductList)
+
+    searchBar.addEventListener('input', e => {
+      filteredProductList = productList.filter(product =>
+        product.name.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+      renderProductList(filteredProductList)
+    })
+
+    category.addEventListener('input', e => {
+      filteredProductList = productList.filter(product =>
+        product.category.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+      renderProductList(filteredProductList)
+    })
+
+    productPage.addEventListener('click', e => {
+      if (e.target.className !== 'product') {
+        selectedProduct = e.target.parentElement
+      } else {
+        selectedProduct = e.target
+      }
+      if (selectedProduct.className !== 'container') {
+        productDetails.querySelector('h2').textContent =
+          selectedProduct.querySelector('h2').textContent
+        productDetails.querySelector('.category-name').textContent =
+          selectedProduct.querySelector('p').textContent
+        productDetails.querySelector('.product-desc').textContent =
+          productList[selectedProduct.id].description
+        productDetails.querySelector('h3').textContent =
+          selectedProduct.querySelector('h3').textContent
+        productDetails.parentElement.parentElement.style.display = 'flex'
+      }
+    })
+
+    cancleBtn.addEventListener('click', () => {
+      productDetails.parentElement.parentElement.style.display = 'none'
+    })
+  </script>
+</html>
