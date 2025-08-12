@@ -345,6 +345,15 @@
 
     const renderProductList = filteredProductList => {
       productPage.innerHTML = ''
+      
+      if(filteredProductList.length <= 0){
+          let msg = document.createElement('h4')
+          msg.textContent = "Product Not Found !"
+          msg.style.color = "white"
+          productPage.append(msg)
+          return
+        }
+
       filteredProductList.map((product, index) => {
         const productContainer = document.createElement('div')
         productContainer.classList.add('product')
