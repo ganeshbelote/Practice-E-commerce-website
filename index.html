@@ -335,16 +335,150 @@
         price: '₹15,999'
       }
     ]
-
+    const miniProductList = [
+      {
+        image: './assets/redmi.png',
+        name: 'Redmi K50i',
+        description: '6GB RAM, 128GB Storage',
+        category: 'Smart Phones',
+        price: '₹20,000'
+      },
+      {
+        image: './assets/iphone.jpeg',
+        name: 'iPhone 14',
+        description: '128GB Storage, A15 Bionic Chip',
+        category: 'Smart Phones',
+        price: '₹79,900'
+      },
+      {
+        image: './assets/smasungS23.webp',
+        name: 'Samsung Galaxy S23',
+        description: '8GB RAM, 256GB Storage',
+        category: 'Smart Phones',
+        price: '₹74,999'
+      },
+      {
+        image: './assets/printer.webp',
+        name: 'HP LaserJet Pro M404dn',
+        description: 'Monochrome Laser Printer',
+        category: 'Laptops & Printers',
+        price: '₹28,000'
+      },
+      {
+        image: './assets/laptop1.webp',
+        name: 'Dell Inspiron 15',
+        description: 'i5 12th Gen, 8GB RAM, 512GB SSD',
+        category: 'Laptops & Printers',
+        price: '₹62,000'
+      },
+      {
+        image: './assets/printer2.jpg',
+        name: 'Canon PIXMA G3000',
+        description: 'All-in-One Ink Tank Printer',
+        category: 'Laptops & Printers',
+        price: '₹16,000'
+      },
+      {
+        image: './assets/fridge1.webp',
+        name: 'LG 260L Double Door Refrigerator',
+        description: 'Smart Inverter Compressor',
+        category: 'Home Appliances',
+        price: '₹27,000'
+      },
+      {
+        image: './assets/machine1.webp',
+        name: 'Samsung 7kg Fully Automatic Washing Machine',
+        description: 'Digital Inverter Motor',
+        category: 'Home Appliances',
+        price: '₹29,500'
+      },
+      {
+        image: './assets/airfryer1.webp',
+        name: 'Philips Air Fryer XL',
+        description: 'Rapid Air Technology, 4.2L',
+        category: 'Home Appliances',
+        price: '₹11,000'
+      },
+      {
+        image: './assets/mouse1.jpg',
+        name: 'Logitech MX Master 3 Mouse',
+        description: 'Ergonomic Wireless Mouse',
+        category: 'Accessories',
+        price: '₹8,500'
+      },
+      {
+        image: './assets/headphones1.jpg',
+        name: 'Sony WH-1000XM5 Headphones',
+        description: 'Noise Cancelling, Wireless',
+        category: 'Accessories',
+        price: '₹34,990'
+      },
+      {
+        image: './assets/charger1.webp',
+        name: 'Dell USB-C Dock',
+        description: 'Multiple Ports, 4K Support',
+        category: 'Accessories',
+        price: '₹14,000'
+      },
+      {
+        image: './assets/cooler1.webp',
+        name: 'Bajaj Platini PX97 Air Cooler',
+        description: '36L, Honeycomb Pads',
+        category: 'Air Coolers',
+        price: '₹7,500'
+      },
+      {
+        image: './assets/cooler2.webp',
+        name: 'Symphony Diet 12T Tower Cooler',
+        description: '12L, i-Pure Technology',
+        category: 'Air Coolers',
+        price: '₹6,200'
+      },
+      {
+        image: './assets/cooler3.webp',
+        name: 'Crompton Ozone 55 Air Cooler',
+        description: '55L, Ice Chamber',
+        category: 'Air Coolers',
+        price: '₹13,000'
+      },
+      {
+        image: './assets/asus1.jpg',
+        name: 'Asus Vivobook 16X',
+        description: 'Ryzen 5, 16GB RAM, 512GB SSD',
+        category: 'Laptops & Printers',
+        price: '₹68,000'
+      },
+      {
+        image: './assets/motorola.webp',
+        name: 'Motorola Edge 40',
+        description: '8GB RAM, 256GB Storage',
+        category: 'Smart Phones',
+        price: '₹29,999'
+      },
+      {
+        image: './assets/fridge2.webp',
+        name: 'Whirlpool 190L Single Door Refrigerator',
+        description: '5 Star, Inverter Technology',
+        category: 'Home Appliances',
+        price: '₹18,500'
+      },
+      {
+        image: './assets/powerbank.jpg',
+        name: 'Anker PowerCore 20,000mAh',
+        description: 'Fast Charging Power Bank',
+        category: 'Accessories',
+        price: '₹3,999'
+      }
+    ]
     const productPage = document.querySelector('.product-page')
     const productDetails = document.querySelector('.product-details .details')
     const cancleBtn = document.querySelector('.cancle')
     const searchBar = document.querySelector('.search-bar input')
     const category = document.querySelector('.category select')
-    let filteredProductList = productList
+    let filteredProductList = miniProductList
 
     const renderProductList = filteredProductList => {
-      productPage.innerHTML = '' 
+      productPage.innerHTML = ''
 
       if (filteredProductList.length <= 0) {
         let msg = document.createElement('h4')
@@ -421,14 +555,24 @@
       for (const key in categoryContainers) {
         const { heading, container } = categoryContainers[key]
         if (container.children.length > 0) {
-          const h2 = document.createElement('h2')
-          h2.classList.add('heading-style')
-          h2.textContent = heading
-          productPage.append(h2, container)
+          const upperDiv = document.createElement('div')
+          upperDiv.classList.add('upper-div')
+          upperDiv.innerHTML = `<span>${heading}</span><button class="view-all">view all</button>`
+          productPage.append(upperDiv, container)
         }
       }
     }
     renderProductList(filteredProductList)
+
+    const viewAllBtns = document.querySelectorAll('.view-all')
+    const categoryList = ["Smart Phones","Laptops & Printers","Air Coolers","Accessories","Home Appliances"]
+    let arrOfBtns = new Array(...viewAllBtns)
+    arrOfBtns.forEach((btn, i) => btn.addEventListener("click", () => {
+      filteredProductList = productList.filter(product =>
+        product.category.toLowerCase().includes(categoryList[i].toLowerCase())
+      )
+      renderProductList(filteredProductList)
+    }))
 
     searchBar.addEventListener('input', e => {
       filteredProductList = productList.filter(product =>
@@ -445,6 +589,12 @@
     })
 
     productPage.addEventListener('click', e => {
+      if (
+        e.target.className == 'upper-div' ||
+        e.target.parentElement.className == 'upper-div'
+      ) {
+        return
+      }
       if (e.target.className !== 'product') {
         if (String(e.target.tagName) == 'IMG') {
           selectedProduct = e.target.parentElement.parentElement
