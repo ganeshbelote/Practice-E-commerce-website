@@ -344,17 +344,40 @@
     let filteredProductList = productList
 
     const renderProductList = filteredProductList => {
-      productPage.innerHTML = ''
-      
-      if(filteredProductList.length <= 0){
-          let msg = document.createElement('h4')
-          msg.textContent = "Product Not Found !"
-          msg.style.color = "white"
-          productPage.append(msg)
-          return
-        }
+      productPage.innerHTML = '' 
 
-      filteredProductList.map((product, index) => {
+      if (filteredProductList.length <= 0) {
+        let msg = document.createElement('h4')
+        msg.textContent = 'Product Not Found !'
+        msg.style.color = 'white'
+        productPage.append(msg)
+        return
+      }
+
+      const categoryContainers = {
+        'Smart Phones': {
+          heading: 'Smart Phones',
+          container: document.createElement('div')
+        },
+        'Laptops & Printers': {
+          heading: 'Laptops & Printers',
+          container: document.createElement('div')
+        },
+        'Air Coolers': {
+          heading: 'Air Coolers',
+          container: document.createElement('div')
+        },
+        Accessories: {
+          heading: 'Accessories',
+          container: document.createElement('div')
+        },
+        'Home Appliances': {
+          heading: 'Home Appliances',
+          container: document.createElement('div')
+        }
+      }
+
+      filteredProductList.forEach((product, index) => {
         const productContainer = document.createElement('div')
         productContainer.classList.add('product')
         productContainer.id = index
@@ -380,7 +403,6 @@
         addCartBtn.textContent = '🛒 Add to Cart'
 
         productImg.append(coverImg)
-
         productContainer.append(
           productImg,
           productName,
@@ -389,8 +411,22 @@
           addCartBtn
         )
 
-        productPage.append(productContainer)
+        if (categoryContainers[product.category]) {
+          categoryContainers[product.category].container.append(
+            productContainer
+          )
+        }
       })
+
+      for (const key in categoryContainers) {
+        const { heading, container } = categoryContainers[key]
+        if (container.children.length > 0) {
+          const h2 = document.createElement('h2')
+          h2.classList.add('heading-style')
+          h2.textContent = heading
+          productPage.append(h2, container)
+        }
+      }
     }
     renderProductList(filteredProductList)
 
